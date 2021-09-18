@@ -36,6 +36,7 @@ export class RepositoriesService {
     const url = `${api}repos/${user}/${name}/commits`;
     const { data } = await this.httpService.get(url).toPromise();
 
+    // Here we are transforming the GITHUB API data format to our format
     const response: Commit[] = data.map((commit) => ({
       author: {
         name: commit.commit.author.name,
