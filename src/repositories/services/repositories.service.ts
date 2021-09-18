@@ -1,6 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
+import { HttpService } from '@nestjs/axios';
 
-import { Repository } from 'repositories/entities/repositories.entity';
+import { Repository, Commit } from 'repositories/entities/repositories.entity';
+import config from 'config';
 
 @Injectable()
 export class RepositoriesService {
@@ -8,6 +11,11 @@ export class RepositoriesService {
     { name: 'show-commits-backend' },
     { name: 'show-commits-frontend' },
   ];
+
+  constructor(
+    @Inject(config.KEY) private configService: ConfigType<typeof config>,
+    private httpService: HttpService,
+  ) {}
 
   getAll() {
     return this.repositories;
@@ -23,7 +31,24 @@ export class RepositoriesService {
     return repository;
   }
 
-  getCommits(name: string) {
-    return `Commits from ${name}`;
+  async getCommits(name: string): Promise<Commit[]> {
+    const { api, user } = this.configService.github;
+    const url = `${api}repos/${user}/${name}/commits`;
+    const { data } = await this.httpService.get(url).toPromise();
+
+    // Here we are transforming the GITHUB API data format to our format
+    const response: Commit[] = data.map((commit) => ({
+      author: {
+        name: commit.commit.author.name,
+        email: commit.commit.author.email,
+        avatarUrl: commit.author.avatar_url,
+      },
+      htmlUrl: commit.html_url,
+      message: commit.commit.message,
+      date: commit.committer.date,
+      sha: commit.sha,
+    }));
+
+    return response;
   }
 }
