@@ -3,26 +3,25 @@ import { ConfigType } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 
 import { Repository, Commit } from 'repositories/entities/repositories.entity';
+import { DATABASE } from 'database/entities/database.entity';
 import config from 'config';
 
 @Injectable()
 export class RepositoriesService {
-  private repositories: Repository[] = [
-    { name: 'show-commits-backend' },
-    { name: 'show-commits-frontend' },
-  ];
-
   constructor(
     @Inject(config.KEY) private configService: ConfigType<typeof config>,
+    @Inject('DATABASE') private database: DATABASE,
     private httpService: HttpService,
   ) {}
 
   getAll() {
-    return this.repositories;
+    return this.database.repositories;
   }
 
   findOne(name: string): Repository {
-    const repository = this.repositories.find((repo) => repo.name === name);
+    const repository = this.database.repositories.find(
+      (repo) => repo.name === name,
+    );
 
     if (!repository) {
       throw new NotFoundException(`Repository #${name} not found`);
@@ -32,8 +31,8 @@ export class RepositoriesService {
   }
 
   async getCommits(name: string): Promise<Commit[]> {
-    const { api, user } = this.configService.github;
-    const url = `${api}repos/${user}/${name}/commits`;
+    const { api } = this.configService.github;
+    const url = `${api}repos/${this.database.user}/${name}/commits`;
     const { data } = await this.httpService.get(url).toPromise();
 
     // Here we are transforming the GITHUB API data format to our format
