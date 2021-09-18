@@ -3,7 +3,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { RepositoriesService } from 'repositories/services/repositories.service';
 import { Repository } from 'repositories/entities/repositories.entity';
 
-@Controller('repos')
+@Controller('repositories')
 export class RepositoriesController {
   constructor(private repositoriesService: RepositoriesService) {}
 
