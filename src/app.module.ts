@@ -18,7 +18,6 @@ import { enviroments } from './enviroments';
       validationSchema: Joi.object({
         GITHUB_API: Joi.string().required(),
         GITHUB_TOKEN: Joi.string().required(),
-        GITHUB_USER: Joi.string().required(),
       }),
     }),
     RepositoriesModule,
