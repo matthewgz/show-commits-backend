@@ -14,6 +14,7 @@ import { RepositoriesService } from './services/repositories.service';
         headers: {
           headers: {
             Authorization: `Bearer ${configService.get('GITHUB_TOKEN')}`,
+            'User-Agent': 'show-commits-backend',
           },
         },
       }),
