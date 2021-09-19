@@ -6,6 +6,7 @@ class Author {
   name: string;
   email: string;
   avatarUrl: string;
+  htmlUrl: string;
 }
 
 export class Commit {
