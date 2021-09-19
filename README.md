@@ -6,7 +6,7 @@ To carry out this, the NestJS framework was used. Which gives us various tools f
 
 The functionalities that the project has is to show the repositories, obtain a specific repository and obtain the commits from a repository. The latter has some parameters that make pagination possible in the frontend part.
 
-For more details on the endpoints, start the project and enter the documentation in the following path [http://localhost:3000/docs/]().
+For more details on the endpoints, start the project and enter the documentation in the following path [http://localhost:8000/docs/]().
 
 ## Installation
 
@@ -37,7 +37,7 @@ In the project directory, you can run:
 
 `npm run start:dev`
 
-Runs the app in the development mode. You can consume the endpoints on the route http://localhost:3000.
+Runs the app in the development mode. You can consume the endpoints on the route http://localhost:8000.
 The project will reload if you make edits.
 
 `npm run test:watch`
