@@ -1,4 +1,5 @@
 export class Repository {
+  label: string;
   name: string;
 }
 
