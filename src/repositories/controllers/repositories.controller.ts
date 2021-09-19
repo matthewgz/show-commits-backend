@@ -26,7 +26,7 @@ export class RepositoriesController {
   @ApiOperation({ summary: 'Get all commits from a repository' })
   getCommits(
     @Param('repositoryName') repositoryName: string,
-    @Query() params: FilterProductsDto,
+    @Query() params?: FilterProductsDto,
   ) {
     return this.repositoriesService.getCommits(repositoryName, params);
   }

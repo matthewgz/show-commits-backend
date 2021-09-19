@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { RepositoriesModule } from 'repositories/repositories.module';
+import { repositoriesService } from 'repositories/__mocks__/repositories.service';
 import { RepositoriesService } from './repositories.service';
-import { repositoriesService } from '../__mocks__/repositories.service';
 
 describe('RepositoriesService', () => {
   let service: RepositoriesService;

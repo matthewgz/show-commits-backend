@@ -31,7 +31,10 @@ export class RepositoriesService {
     return repository;
   }
 
-  async getCommits(name: string, params: FilterProductsDto): Promise<Commit[]> {
+  async getCommits(
+    name: string,
+    params?: FilterProductsDto,
+  ): Promise<Commit[]> {
     const config: any = {};
     if (params) {
       const { limit, page } = params;
