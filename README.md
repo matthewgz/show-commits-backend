@@ -1,73 +1,49 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Github API integration to show commits
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project consumes the GitHub API to obtain the commits made in this project and that of the show-commits-frontend repository.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+To carry out this, the NestJS framework was used. Which gives us various tools for a good documentation of the endpoints and on the other hand tools for data validation.
 
-## Description
+The functionalities that the project has is to show the repositories, obtain a specific repository and obtain the commits from a repository. The latter has some parameters that make pagination possible in the frontend part.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+For more details on the endpoints, start the project and enter the documentation in the following path [http://localhost:3000/docs/]().
 
 ## Installation
 
-```bash
-$ npm install
-```
+1. For installation, you will first need to clone this project on your workstation.
 
-## Running the app
+2. Once the project is cloned, you must enter the project using a terminal and execute the following command to complete the installation.
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Test
+## Configuration
+
+Before starting the project make sure the `.env` is correctly configured. Copy `.env.example` and consider these values:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Place the GITHUB API
+GITHUB_API='https://api.github.com/'
+# Place the generated token with the github account
+GITHUB_TOKEN='xxxxxxxxxx'
 ```
 
-## Support
+The `GITHUB_API` variable should not change, but the value of the `GITHUB_TOKEN` variable should be a valid one. This token will be provided by mail and should be placed there.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Available Scripts
 
-## Stay in touch
+In the project directory, you can run:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+`npm run start:dev`
 
-## License
+Runs the app in the development mode. You can consume the endpoints on the route http://localhost:3000.
+The project will reload if you make edits.
 
-Nest is [MIT licensed](LICENSE).
+`npm run test:watch`
+
+Launches the test runner in the interactive watch mode.
+
+`npm run test:e2e`
+
+Launches the end-to-end test runner.
