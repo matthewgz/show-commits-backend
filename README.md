@@ -8,6 +8,10 @@ The functionalities that the project has is to show the repositories, obtain a s
 
 For more details on the endpoints, start the project and enter the documentation in the following path [http://localhost:8000/docs/]().
 
+Deployed: [Deploy](https://damp-wildwood-17204.herokuapp.com/)
+
+Documentation: [Docs](https://damp-wildwood-17204.herokuapp.com/docs)
+
 ## Installation
 
 1. For installation, you will first need to clone this project on your workstation.
